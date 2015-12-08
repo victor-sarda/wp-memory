@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -41,13 +42,36 @@
 
         <!--TitlePanel contient le nom de l'application et le titre de la page-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MON APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="nom de la page" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Memory" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0" FontSize="22" HorizontalAlignment="Center" FontWeight="Bold"/>
         </StackPanel>
 
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid HorizontalAlignment="Left" Height="673" Margin="0,10,0,0" VerticalAlignment="Top" Width="456">
+                <Grid HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="456" Margin="0,24,0,0">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Thème : " VerticalAlignment="Top"/>
 
+                    <ComboBox Width="200" Height="100">
+                        <ComboBoxItem Content="aaa" />
+                        <ComboBoxItem Content="bbb" />
+                        <ComboBoxItem Content="ccc" />                        
+                    </ComboBox>
+
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="453" Margin="0,100,0,0" VerticalAlignment="Top" Width="456">
+                    <Button Content="Facile" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="436"/>
+                    <Button Content="Moyen" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Width="436"/>
+                    <Button Content="Difficile" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="436"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+                    	<Run Text="Difficulté : "/>
+                    	<LineBreak/>
+                    	<Run/>
+                    </TextBlock>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="120" Margin="0,553,0,0" VerticalAlignment="Top" Width="456">
+                    <Button Content="Meilleurs Scores" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="436"/>
+                </Grid>
+            </Grid>
         </Grid>
 
         <!--Supprimez les commentaires pour voir une grille d'alignement qui vous aidera à vous assurer que vos contrôles sont
