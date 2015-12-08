@@ -31,4 +31,5 @@ Lien : https://www.flickr.com/photos/131201921@N05/sets/72157662098727096/
 ##DATE DE livraison
 
 Date de livraison du cahier des charges final : 19 décembre 2015
+
 Date de livraison du projet terminé : 16 janvier 2016
