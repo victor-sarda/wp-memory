@@ -37,5 +37,30 @@ namespace WP_Memory
             //    ApplicationBar.MenuItems.Add(appBarMenuItem);
             //}
         }
+    
+        
+    // Fonctions qui gèrent le click sur les boutons 
+        private void JeuFacile(object sender, RoutedEventArgs e)
+        {
+            PhoneApplicationService.Current.State["nb"] = 4;
+            NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
+        }
+
+        private void JeuMoyen(object sender, RoutedEventArgs e)
+        {
+            PhoneApplicationService.Current.State["nb"] = 6;
+            NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
+        }
+
+        private void JeuDifficile(object sender, RoutedEventArgs e)
+        {
+            PhoneApplicationService.Current.State["nb"] = 8;
+            NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Scores.xaml", UriKind.Relative));
+        }
     }
 }

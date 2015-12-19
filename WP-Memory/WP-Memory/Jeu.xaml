@@ -22,7 +22,7 @@
 
         <!--TitlePanel contient le nom de l'application et le titre de la page-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Style="{StaticResource PhoneTextNormalStyle}" FontWeight="Bold" HorizontalAlignment="Center" Height="30" Margin="172,0">
+            <TextBlock x:Name="A" Style="{StaticResource PhoneTextNormalStyle}" FontWeight="Bold" HorizontalAlignment="Center" Height="30" Margin="172,0">
             	<Run Text="Partie : Facile"/>
             	<LineBreak/>
             	<Run/>
@@ -39,41 +39,40 @@
          
             <Grid HorizontalAlignment="Left" Height="583" Margin="14,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456">
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image1" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,145,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
+                    <Image x:Name="Image4" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,290,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image7" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,436,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image10" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,0,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image2" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,0,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image3" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,145,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="130" Margin="0,10,0,0"/>
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="130" Margin="0,10,0,0"/>
+                    <Image x:Name="Image5" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="130" Margin="0,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,145,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image6" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,290,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
-                </Grid>
+                    <Image x:Name="Image9" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+               </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,290,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image8" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,436,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image11" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,436,0,0">
-                    <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image12" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
             </Grid>  
             <Grid HorizontalAlignment="Left" Height="66" Margin="10,593,0,0" VerticalAlignment="Top" Width="436">
