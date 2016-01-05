@@ -45,6 +45,10 @@ namespace WP_Memory
                 // Modification du header
                 switch (nb)
                 {
+                    case 4:
+                        A.Text = "Débutant";
+                        cartes = new List<Carte> { carte1, carte2, carte3, carte4 };
+                        break;
                     case 6:
                         A.Text = "Facile";
                         cartes = new List<Carte> { carte1, carte2, carte3, carte4, carte5, carte6 };
@@ -60,7 +64,12 @@ namespace WP_Memory
                     default:
                         cartes = new List<Carte> { carte1, carte2, carte3 };
                         break;
+                
                 }
+                // Variable de textes 
+                textScore.Text = "Nombre d'essais : 0";
+                textScore.TextAlignment = TextAlignment.Center;
+                A.TextAlignment = TextAlignment.Center;
 
                 // On trie de facon aléatoire les cartes
                 Random rnd = new Random();
@@ -93,6 +102,7 @@ namespace WP_Memory
                     cartes[val].EstRetournee = true;
                 }
 
+                // Si deux cartes retournées
                 Paire();
             }
         }
@@ -111,10 +121,13 @@ namespace WP_Memory
             return 1;
         }
 
+        // Fonction qui vérifie si les deux cartes retournées sont les meme 
         private async void Paire()
         {
+            // Initialisation des parametres
             List<Carte> cartesRetournee = new List<Carte>();
             int nbTrouve = 0;
+
             // Recherche si une carte est retournee 
             for (int i = 0; i < cartes.Count; i++)
             {
@@ -131,21 +144,29 @@ namespace WP_Memory
             // Si il y a deja une carte retournée
             if (cartesRetournee.Count == 2)
             {
+                // Initialisation des variables et incrementation du score
                 score++;
                 textScore.Text = "Essais : " + score;
+                textScore.TextAlignment = TextAlignment.Center;
                 bloque = false;
+
+                // Si même cartes
                 if (cartesRetournee[0].Valeur == cartesRetournee[1].Valeur)
                 {
+                    // On les bloques
                     cartesRetournee[0].EstGelee = true;
                     cartesRetournee[1].EstGelee = true;
                     bloque = true;
 
-                    if (nbTrouve == (nb - 2)){
-                        System.Diagnostics.Debug.WriteLine("T'as gg mec !");
-                        
+                    // Si plus de paires restantes a trouver :
+                    if (nbTrouve == (nb - 2))
+                    {
+                        // Popup de victoire
+                        TextPopup.Text = "Gagné ! \n Nombre de mouvements : " + score.ToString();
+                        TextPopup.TextAlignment = TextAlignment.Center;
+                        if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
                     }
-                }
-                else
+                }  else
                 {
                     // On retourne les cartes face caché apres une seconde
                     await Attendre();
@@ -156,17 +177,12 @@ namespace WP_Memory
                 }
             }
         }
-        public static List<T> Randomize<T>(List<T> list)
+        
+        // Fonction de fin de partie
+        private void FinPartie(object sender, RoutedEventArgs e)
         {
-            List<T> randomizedList = new List<T>();
-            Random rnd = new Random();
-            while (list.Count > 0)
-            {
-                int index = rnd.Next(0, list.Count); //pick a random item from the master list
-                randomizedList.Add(list[index]); //place it at the end of the randomized list
-                list.RemoveAt(index);
-            }
-            return randomizedList;
+            // TODO ENREGISTREMENT DU SCORE !!
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
     }
 }

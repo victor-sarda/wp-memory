@@ -40,6 +40,12 @@ namespace WP_Memory
     
         
     // Fonctions qui gèrent le click sur les boutons 
+        private void JeuDebutant(object sender, RoutedEventArgs e)
+        {
+            PhoneApplicationService.Current.State["nb"] = 4;
+            NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
+        }
+
         private void JeuFacile(object sender, RoutedEventArgs e)
         {
             PhoneApplicationService.Current.State["nb"] = 6;
@@ -57,7 +63,7 @@ namespace WP_Memory
             PhoneApplicationService.Current.State["nb"] = 10;
             NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Scores.xaml", UriKind.Relative));

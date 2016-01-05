@@ -49,11 +49,14 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid HorizontalAlignment="Left" Height="673" Margin="0,10,0,0" VerticalAlignment="Top" Width="456">
                 <Grid HorizontalAlignment="Left" Height="453" VerticalAlignment="Top" Width="456">
-                    <Button Content="Facile" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="436" Click="JeuFacile"/>
-                    <Button Content="Moyen" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Width="436" Click="JeuMoyen"/>
-                    <Button Content="Difficile" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top" Width="436" Click="JeuDifficile"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
-                    	<Run Text="Difficulté : "/>
+                    <Button Content="Debutant" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="436" Click="JeuDebutant"/>
+                    <Button Content="Facile" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Width="436" Click="JeuFacile"/>
+                    <Button Content="Moyen" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="436" Click="JeuMoyen"/>
+                    <Button Content="Difficile" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Width="436" Click="JeuDifficile"/>
+            
+                    <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325">
+                    	<Run Text="Choix de la d"/>
+                    	<Run Text="ifficulté : "/>
                     	<LineBreak/>
                     	<Run/>
                     </TextBlock>
@@ -61,6 +64,7 @@
                 <Grid HorizontalAlignment="Left" Height="220" Margin="0,453,0,0" VerticalAlignment="Top" Width="456">
                     <Button Content="Meilleurs Scores" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="436" Click="Button_Click"/>
                 </Grid>
+
             </Grid>
         </Grid>
 
