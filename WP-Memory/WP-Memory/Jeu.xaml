@@ -48,40 +48,40 @@
         </Popup>
             <Grid HorizontalAlignment="Left" Height="583" Margin="14,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456">
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140">
-                    <Image x:Name="Image1" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image1" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,145,0,0">
-                    <Image x:Name="Image4" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
+                    <Image x:Name="Image4" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,290,0,0">
-                    <Image x:Name="Image7" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image7" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="0,436,0,0">
-                    <Image x:Name="Image11" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image11" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,0,0,0">
-                    <Image x:Name="Image2" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image2" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,0,0,0">
-                    <Image x:Name="Image5" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image5" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,145,0,0">
-                    <Image x:Name="Image3" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image3" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,145,0,0">
-                    <Image x:Name="Image6" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image6" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,290,0,0">
-                    <Image x:Name="Image8" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image8" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,290,0,0">
-                    <Image x:Name="Image9" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image9" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="145,436,0,0">
-                    <Image x:Name="Image10" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image10" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
                 <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="140" Margin="290,436,0,0">
-                    <Image x:Name="Image12" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
+                    <Image x:Name="Image12" Canvas.Left="0" Tap="Image_Tap" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="120" Margin="10,10,0,0"/>
                 </Grid>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="66" Margin="10,593,0,0" VerticalAlignment="Top" Width="436">

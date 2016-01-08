@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
 using System.Threading.Tasks;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
 
 namespace WP_Memory
 {
@@ -39,7 +41,6 @@ namespace WP_Memory
             
             // Initialisation du listing des images
             images = new List<Image> { Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10};
-
             if (PhoneApplicationService.Current.State.ContainsKey("nb"))
             {
                 // Modification du header
@@ -158,6 +159,34 @@ namespace WP_Memory
                     cartesRetournee[1].EstGelee = true;
                     bloque = true;
 
+                    // On anime leur opacité : 
+                    DoubleAnimation myDoubleAnimation1 = new DoubleAnimation();
+                    DoubleAnimation myDoubleAnimation2 = new DoubleAnimation();
+
+                    // Ajout de la durée
+                    Duration temps = new Duration(TimeSpan.FromSeconds(2));
+                    myDoubleAnimation1.Duration = temps;
+                    myDoubleAnimation2.Duration = temps;
+
+                    // Réglage des valeurs d'opacité
+                    myDoubleAnimation1.From = 1.0;
+                    myDoubleAnimation1.To = 0; 
+                    myDoubleAnimation2.From = 1.0;
+                    myDoubleAnimation2.To = 0;
+
+                    // Définition de l'animation
+                    Storyboard sb = new Storyboard();
+                    sb.Duration = temps;
+                    sb.Children.Add(myDoubleAnimation1);
+                    sb.Children.Add(myDoubleAnimation2);
+                    Storyboard.SetTarget(myDoubleAnimation1, images[cartesRetournee[0].ImgId]);
+                    Storyboard.SetTarget(myDoubleAnimation2, images[cartesRetournee[1].ImgId]);
+                    Storyboard.SetTargetProperty(myDoubleAnimation1, new PropertyPath("Opacity"));
+                    Storyboard.SetTargetProperty(myDoubleAnimation2, new PropertyPath("Opacity"));
+
+                    // Lancement de l'animation
+                    sb.Begin();
+
                     // Si plus de paires restantes a trouver :
                     if (nbTrouve == (nb - 2))
                     {
@@ -168,6 +197,42 @@ namespace WP_Memory
                     }
                 }  else
                 {
+                    // On  : 
+                    DoubleAnimation myDoubleAnimation1 = new DoubleAnimation();
+                    DoubleAnimation myDoubleAnimation2 = new DoubleAnimation();
+
+                    // Ajout de la durée
+                    Duration temps = new Duration(TimeSpan.FromSeconds(1));
+                    myDoubleAnimation1.Duration = temps;
+                    myDoubleAnimation2.Duration = temps;
+
+                  
+
+                    // Réglage des valeurs d'opacité
+                    myDoubleAnimation1.To = 360 ;
+                    myDoubleAnimation2.To = 360;
+
+                    // Définition de l'animation
+                    Storyboard sb = new Storyboard();
+                    sb.Duration = temps;
+                    sb.Children.Add(myDoubleAnimation1);
+                    sb.Children.Add(myDoubleAnimation2);
+
+                    RotateTransform rt = new RotateTransform();
+                    RotateTransform rt2 = new RotateTransform();
+
+                    Storyboard.SetTarget(myDoubleAnimation1, rt);
+                    Storyboard.SetTarget(myDoubleAnimation2, rt2);
+                    Storyboard.SetTargetProperty(myDoubleAnimation1, new PropertyPath("Angle"));
+                    Storyboard.SetTargetProperty(myDoubleAnimation2, new PropertyPath("Angle"));
+
+                    images[cartesRetournee[0].ImgId].RenderTransform = rt;
+                    images[cartesRetournee[0].ImgId].RenderTransformOrigin = new Point(0.5, 0.5);
+                    images[cartesRetournee[1].ImgId].RenderTransform = rt;
+                    images[cartesRetournee[1].ImgId].RenderTransformOrigin = new Point(0.5, 0.5);
+                    // Lancement de l'animation
+                    sb.Begin();
+
                     // On retourne les cartes face caché apres une seconde
                     await Attendre();
                     cartesRetournee[0].EstRetournee = false;
