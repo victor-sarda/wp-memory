@@ -32,6 +32,7 @@ namespace WP_Memory
             this.pseudo = pseudo;
         }
 
+        // tri du score
         public int CompareTo(Users compareScore)
         {
             // A null value means that this object is greater.
