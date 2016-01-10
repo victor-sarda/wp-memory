@@ -11,22 +11,35 @@ using System.Windows.Media.Imaging;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 using System.Windows.Media;
+using System.Xml;
+using System.IO.IsolatedStorage;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace WP_Memory
 {
     public partial class Jeu : PhoneApplicationPage
     {
         // Initialisation des variables 
-        bool bloque = true;
+        bool bloque;
+        bool stop ;
+        String Mode;
         List<Carte> cartes;
         List<Image> images;
         int nb = (int)PhoneApplicationService.Current.State["nb"];
-        int score =0;
+        int score;
 
         public Jeu()
         {
+            Jouer();
+        }
+
+        private void Jouer()
+        {
             InitializeComponent();
-            
+            bloque = true;
+            stop = false;
+            score = 0;
             // Initialisation des cartes
             Carte carte1 = new Carte(1, false, "/Assets/etoile.png");
             Carte carte2 = new Carte(1, false, "/Assets/etoile.png");
@@ -41,34 +54,43 @@ namespace WP_Memory
             
             // Initialisation du listing des images
             images = new List<Image> { Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10};
+            for (int i=0; i<images.Count; i++){
+                images[i].Opacity = 1.0;
+            }
+
+
             if (PhoneApplicationService.Current.State.ContainsKey("nb"))
             {
                 // Modification du header
                 switch (nb)
                 {
                     case 4:
-                        A.Text = "Débutant";
+                        Mode = "Débutant";
+                        A.Text = Mode;
                         cartes = new List<Carte> { carte1, carte2, carte3, carte4 };
                         break;
                     case 6:
-                        A.Text = "Facile";
+                        Mode = "Facile";
+                        A.Text = Mode;
                         cartes = new List<Carte> { carte1, carte2, carte3, carte4, carte5, carte6 };
                         break;
                     case 8:
-                        A.Text = "Moyen";
+                        Mode = "Moyen";
+                        A.Text = Mode;
                         cartes = new List<Carte> { carte1, carte2, carte3, carte4, carte5, carte6, carte7, carte8 };
                         break;
                     case 10:
-                        A.Text = "Difficile";
+                        Mode = "Difficile";
+                        A.Text = Mode;
                         cartes = new List<Carte> { carte1, carte2, carte3, carte4, carte5, carte6, carte7, carte8, carte9, carte10 };
                         break;
                     default:
                         cartes = new List<Carte> { carte1, carte2, carte3 };
                         break;
-                
+
                 }
                 // Variable de textes 
-                textScore.Text = "Nombre d'essais : 0";
+                textScore.Text = "Nombre de mouvements : 0";
                 textScore.TextAlignment = TextAlignment.Center;
                 A.TextAlignment = TextAlignment.Center;
 
@@ -80,11 +102,10 @@ namespace WP_Memory
                 for (int i = 0; i < nb; i++)
                 {
                     cartes[i].ImgId = i;
-                    images[i].Source = new BitmapImage(new Uri("/Assets/back.png", UriKind.Relative));                       
+                    images[i].Source = new BitmapImage(new Uri("/Assets/back.png", UriKind.Relative));
                 }
             }
         }
-
         // Fonction qui retourne la carte
         private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
@@ -147,7 +168,7 @@ namespace WP_Memory
             {
                 // Initialisation des variables et incrementation du score
                 score++;
-                textScore.Text = "Essais : " + score;
+                textScore.Text = "Nombre de mouvements : " + score;
                 textScore.TextAlignment = TextAlignment.Center;
                 bloque = false;
 
@@ -164,7 +185,7 @@ namespace WP_Memory
                     DoubleAnimation myDoubleAnimation2 = new DoubleAnimation();
 
                     // Ajout de la durée
-                    Duration temps = new Duration(TimeSpan.FromSeconds(2));
+                    Duration temps = new Duration(TimeSpan.FromSeconds(1));
                     myDoubleAnimation1.Duration = temps;
                     myDoubleAnimation2.Duration = temps;
 
@@ -191,7 +212,10 @@ namespace WP_Memory
                     if (nbTrouve == (nb - 2))
                     {
                         // Popup de victoire
-                        TextPopup.Text = "Gagné ! \n Nombre de mouvements : " + score.ToString();
+                        TextPopup.Text = "Gagné ! \n Nombre de mouvements : " + score.ToString() +"\n Entrez votre pseudo ci-dessous :";
+                        BtnAnnuler.Visibility = System.Windows.Visibility.Collapsed; 
+                        BtnRejouer.Visibility = System.Windows.Visibility.Visible;
+                        BtnStop.IsEnabled = false;
                         TextPopup.TextAlignment = TextAlignment.Center;
                         if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
                     }
@@ -204,9 +228,7 @@ namespace WP_Memory
                     // Ajout de la durée
                     Duration temps = new Duration(TimeSpan.FromSeconds(1));
                     myDoubleAnimation1.Duration = temps;
-                    myDoubleAnimation2.Duration = temps;
-
-                  
+                    myDoubleAnimation2.Duration = temps;                  
 
                     // Réglage des valeurs d'opacité
                     myDoubleAnimation1.To = 360 ;
@@ -242,12 +264,78 @@ namespace WP_Memory
                 }
             }
         }
-        
+        // Fonction rejouer
+          private void RestartPartie(object sender, RoutedEventArgs e)
+        {
+            Jouer();
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        // Fonction annuler 
+        private void FermerPopup(object sender, RoutedEventArgs e)
+        {
+            stop = false; 
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+        }
+
+        // Fonction pour arreter le jeu
+        private void ArreterJeu(object sender, RoutedEventArgs e)
+        {
+            // Popup de victoire
+            stop = true;
+            TextPopup.Text = "Etes vous sur de vouloir quitter ? \n Nombre de mouvements : " + score.ToString() +"\n La partie ne sera pas sauvegardée";
+            txtPseudo.Visibility = System.Windows.Visibility.Collapsed;
+            BtnRejouer.Visibility = System.Windows.Visibility.Collapsed;
+            BtnAnnuler.Visibility = System.Windows.Visibility.Visible;
+            TextPopup.TextAlignment = TextAlignment.Center;
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+
         // Fonction de fin de partie
         private void FinPartie(object sender, RoutedEventArgs e)
         {
-            // TODO ENREGISTREMENT DU SCORE !!
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            if (stop == false)
+            {
+                SauvegarderScore(txtPseudo.Text);
+            }
+            NavigationService.GoBack();
+        }
+
+        // Fonction qui sauvegarde le score
+        private void SauvegarderScore(String pseudo)
+        {
+            // Write to the Isolated Storage
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+            xmlWriterSettings.Indent = true;
+
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                List<Users> list = new List<Users>();
+                // Mode création ou edition selon l'existance du fichier
+                if (myIsolatedStorage.FileExists(Mode + ".xml"))
+                {
+                   using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile(Mode + ".xml", FileMode.Open))
+                   {
+                       XmlSerializer serializer = new XmlSerializer(typeof(List<Users>));
+                       list = (List<Users>)serializer.Deserialize(stream);
+                   }
+                } 
+
+                // Ecriture du score
+                using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile(Mode + ".xml", FileMode.Create))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<Users>));
+                        if (pseudo.Length == 0) { 
+                            pseudo = "Undefined";
+                        }
+                        Users user = new Users(pseudo, score.ToString());
+                        list.Add(user);
+                        using (XmlWriter xmlWriter = XmlWriter.Create(stream, xmlWriterSettings))
+                        {
+                            serializer.Serialize(xmlWriter, list);
+                        }
+                    }
+            }
         }
     }
 }

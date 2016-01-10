@@ -27,35 +27,31 @@
 
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Grid HorizontalAlignment="Left" Height="237" VerticalAlignment="Top" Width="456">
-                <TextBlock HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="456">
-                	<Run Text="Choi"/>
-                	<Run Text="si"/>
-                	<Run Text="ssez"/>
-                	<Run Text=" votre difficulté :"/>
-                </TextBlock>
+            <Grid HorizontalAlignment="Left" Height="232" VerticalAlignment="Top" Width="456" Margin="0,0,0,0">
+                <RadioButton x:Name="CBDebutant" GroupName="Difficulte" Content="Débutant" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="230"/>
+                <RadioButton x:Name="CBDifficile" GroupName="Difficulte" Content="Difficile" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Width="221"/>
+                <RadioButton x:Name="CBMoyen" GroupName="Difficulte" Content="Moyen" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="230"/>
+                <RadioButton x:Name="CBFacile" GroupName="Difficulte" Content="Facile" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" Width="221"/>
 
-                <ComboBox Width="200" Height="100">
-                    <ComboBoxItem Content="aaa" />
-                    <ComboBoxItem Content="bbb" />
-                    <ComboBoxItem Content="ccc" />
-                </ComboBox>
+                <Button Content="Afficher les scores" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="436" Click="AfficheScore"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="456" Margin="0,237,0,0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sarda : 10" VerticalAlignment="Top" Width="456" Margin="0,10,0,0"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Margin="0,42,0,0">
-                	<Run Text="Flobiche"/>
-                	<Run Text=": 10"/>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sarda : 10" VerticalAlignment="Top" Width="456" Margin="0,74,0,0"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Margin="0,106,0,0" FontFamily="Portable User Interface">
-                	<Run Text="Ninja"/>
-                	<Run Text=" : 10"/>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sarda : 10" VerticalAlignment="Top" Width="456" Margin="0,138,0,0"/>
+                <ListBox Name="listScores" ItemsSource="{Binding}" Margin="25,0,31,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock>
+                                  <Run Text="{Binding Pseudo}" />
+                                  <Run Text=" - " />
+                                  <Run Text="{Binding Score}" />
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="100" Margin="0,587,0,0" VerticalAlignment="Top" Width="456">
-                <Button Content="Retour" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="456"/>
+                <Button Content="Retourner au menu" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="456" Click="Retour"/>
             </Grid>
 
         </Grid>

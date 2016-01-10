@@ -64,9 +64,14 @@ namespace WP_Memory
             NavigationService.Navigate(new Uri("/Jeu.xaml", UriKind.Relative));
         }
         
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Scores(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Scores.xaml", UriKind.Relative));
+        }
+
+        private void Regles(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Regles.xaml", UriKind.Relative));
         }
     }
 }

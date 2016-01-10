@@ -37,13 +37,17 @@
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
-        <Popup x:Name="StandardPopup" Margin="0,95,0,0">
+        <Popup x:Name="StandardPopup" Margin="0,45,0,272">
         <Border Background="Black" BorderBrush="White"           
-                BorderThickness="2" Width="457" Height="240">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock x:Name="TextPopup" Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center" VerticalAlignment="Center" Width="426" Height="83" />
-                        <Button Content="Fermer"  HorizontalAlignment="Center" Click="FinPartie" />
-             </StackPanel>
+                BorderThickness="2" Width="457" Height="386">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock x:Name="TextPopup" Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center" VerticalAlignment="Center" Width="426" Height="109" Margin="0,50,0,0" />
+                <TextBox x:Name="txtPseudo" Width="390" />
+                <Button x:Name="BtnRejouer" Content="Rejouer"  HorizontalAlignment="Left" Click="RestartPartie" Width="421" />
+                <Button x:Name="BtnAnnuler" Content="Annuler"  HorizontalAlignment="Left" Click="FermerPopup" Width="421" />
+                <Button  Content="Retour au menu"  HorizontalAlignment="Left" Click="FinPartie"  Width="421"/>
+                
+            </StackPanel>
         </Border>
         </Popup>
             <Grid HorizontalAlignment="Left" Height="583" Margin="14,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456">
@@ -85,7 +89,7 @@
                 </Grid>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="66" Margin="10,593,0,0" VerticalAlignment="Top" Width="436">
-                <Button Content="Arreter le jeu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="436" Margin="0,-10,0,0" Click="FinPartie"/>
+                <Button x:Name="BtnStop" Content="Arreter le jeu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="436" Margin="0,-10,0,0" Click="ArreterJeu"/>
             </Grid>
 
         </Grid>
