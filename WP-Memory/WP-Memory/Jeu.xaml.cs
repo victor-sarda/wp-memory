@@ -130,16 +130,23 @@ namespace WP_Memory
         }
 
         // Fonctions qui gèrent l'attente
-        public async Task Attendre()
+        public async Task Attendre(int tache)
         {
-            Task<int> delai = Delai();
+            Task<int> delai = Delai(tache);
             int result = await delai;
         }
 
-        public async Task<int> Delai() 
+        public async Task<int> Delai(int tache) 
         {
             await Task.Delay(1000);
-            bloque = true;
+            if (tache == 1)
+            {
+                bloque = true;
+            }
+            else
+            {
+                BtnRejouer.IsEnabled = true;
+            }
             return 1;
         }
 
@@ -215,6 +222,8 @@ namespace WP_Memory
                         TextPopup.Text = "Gagné ! \n Nombre de mouvements : " + score.ToString() +"\n Entrez votre pseudo ci-dessous :";
                         BtnAnnuler.Visibility = System.Windows.Visibility.Collapsed; 
                         BtnRejouer.Visibility = System.Windows.Visibility.Visible;
+                        BtnRejouer.IsEnabled = false;
+                        await Attendre(2);
                         BtnStop.IsEnabled = false;
                         TextPopup.TextAlignment = TextAlignment.Center;
                         if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
@@ -256,7 +265,7 @@ namespace WP_Memory
                     sb.Begin();
 
                     // On retourne les cartes face caché apres une seconde
-                    await Attendre();
+                    await Attendre(1);
                     cartesRetournee[0].EstRetournee = false;
                     cartesRetournee[1].EstRetournee = false;
                     images[cartesRetournee[0].ImgId].Source = new BitmapImage(new Uri("/Assets/back.png", UriKind.Relative));
